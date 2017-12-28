@@ -9,6 +9,7 @@ from pymongo import MongoClient
 from werkzeug.debug import DebuggedApplication
 from flask_restful import Api, Resource, reqparse
 from flask import Flask, jsonify
+from flask import request
 
 # Initialization
 app = Flask(__name__)
@@ -43,16 +44,20 @@ class Posts(ResourceDb):
         self.db.authenticate(str(self._user), str(self._pwd), source='admin')
         # Build arguments
         self.reqparse = reqparse.RequestParser()
-        self.reqparse.add_argument('from', type=str, required=False, location='json')
-        self.reqparse.add_argument('to', type=str, required=False, location='json')
-        self.reqparse.add_argument('author', type=str, required=False, location='json')
+        self.reqparse.add_argument('from', type=str, required=False, location='args')
+        self.reqparse.add_argument('to', type=str, required=False, location='args')
+        self.reqparse.add_argument('author', type=str, required=False, location='args')
 
     def post(self):
+        # from_ = request.args.get('from', type=str)
+        # to = request.args.get('to', type = str)
         args = self.reqparse.parse_args()
         # Get the arguments
         from_ = args['from']
         to = args['to']
         author = args['author']
+        print(to, from_)
+        # print(author)
         # Build the query for the db
         query = {}
         if to:
@@ -66,8 +71,9 @@ class Posts(ResourceDb):
         # else:
         #     query['date'] = {'$lte': to}
         if author:
-            query['auteur'] = author
+            query['autor'] = author
 
+        # print(query)
         tmp = [item for item in self.db.vdm.find(query, {'_id': False})]
         res = OrderedDict()
         res['posts'] = tmp

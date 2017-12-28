@@ -3,7 +3,6 @@
     iadvize-db-svc:
       container_name: iAdvize-db-svc
       image: bitnami/mongodb:latest
-      # restart: always
       ports:
         - "27017:27017"
       volumes:

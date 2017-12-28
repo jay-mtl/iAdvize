@@ -79,5 +79,6 @@ name = 'vdm'
 _db_[name].insert_many(results)
 
 
-# curl -i -X POST -H "Content-Type: application/json"  http://localhost/api/posts/
-# curl -i -X GET -H "Content-Type: application/json"  http://localhost/api/posts/5
+curl -i -X POST http://localhost/api/posts?author=CocoCharnell
+curl -i -X POST -H "Content-Type: application/json" -d '{"Camp": {"Adv":"test"} }'
+curl -i -X GET -H "Content-Type: application/json"  http://localhost/api/posts/5
