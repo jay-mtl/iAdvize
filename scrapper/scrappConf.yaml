@@ -1,0 +1,14 @@
+  version: '3'
+  services:
+    iadvize-exec-svc:
+      container_name: iadvize-exec-svc
+      build: ./
+      command: ["python", "/usr/src/app/vdmScrap.py"]
+      environment:
+        - MONGODB_PASSWORD=Ceci3st1pwd}
+      networks:
+        - iadvize_iAdvize
+
+  networks:
+    iadvize_iAdvize:
+      external: true

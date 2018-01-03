@@ -1,0 +1,5 @@
+
+# To build the api, the server nginx, and the mongo database
+docker-compose -f stackConf.yaml up -d --build
+# To execute the scrapping of vdm
+docker-compose -f scrapper/scrappConf.yaml up -d --build

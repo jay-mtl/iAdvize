@@ -78,7 +78,11 @@ name = 'vdm'
 
 _db_[name].insert_many(results)
 
+print('db_update')
 
-curl -i -X POST http://localhost/api/posts?author=CocoCharnell
-curl -i -X POST -H "Content-Type: application/json" -d '{"Camp": {"Adv":"test"} }'
-curl -i -X GET -H "Content-Type: application/json"  http://localhost/api/posts/5
+# curl -i -X POST http://localhost/api/posts?author=Soweit"
+# curl -i -X GET "http://localhost/api/posts/5"
+curl -i -X POST "http://localhost/api/posts?from=2016-10-25T21:00:00Z&to=2016-10-26T18:00:00Z"
+
+# curl -i -X POST -H "Content-Type: application/json" -d '{"Camp": {"Adv":"test"} }'
+# curl -i -X GET -H "Content-Type: application/json"  http://localhost/api/posts/5

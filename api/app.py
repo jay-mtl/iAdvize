@@ -62,16 +62,24 @@ class Posts(ResourceDb):
         query = {}
         if to:
             to = self.clean_date(to)
-            query['date'] = {'$lte': to}
+            if query.get('date'):
+                query['date']['$lte'] = to
+            else:
+                query['date'] = {'$lte': to}
         # else:
         #     to = datetime.today()
         if from_:
             from_ = self.clean_date(from_)
-            query['date'] = {'$gte': from_}
+            if query.get('date'):
+                query['date']['$gte'] = from_
+            else:
+                query['date'] = {'$gte': from_}
         # else:
         #     query['date'] = {'$lte': to}
         if author:
             query['autor'] = author
+
+        print(query)
 
         # print(query)
         tmp = [item for item in self.db.vdm.find(query, {'_id': False})]
