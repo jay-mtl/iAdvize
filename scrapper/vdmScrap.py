@@ -80,7 +80,8 @@ _db_[name].insert_many(results)
 
 print('db_update')
 
-# curl -i -X POST http://localhost/api/posts?author=Soweit"
+# curl -i -X POST "http://localhost/api/posts"
+# curl -i -X POST "http://localhost/api/posts?author=pierroute"
 # curl -i -X GET "http://localhost/api/posts/5"
 # curl -i -X POST "http://localhost/api/posts?from=2016-10-25T21:00:00Z&to=2016-10-26T18:00:00Z"
 
